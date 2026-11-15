@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HooDunnit?
 
-## Getting Started
+site + telegram bot for **HooDunnit?**, EnROOT group 8's murder mystery treasure hunt.
+mon 23 nov 2026, 5pm to 6:30pm, ROOT Cove.
 
-First, run the development server:
+people get a clue card, walk to 5 places around SUTD and scan a QR code at each one. every QR page has a bit of
+evidence, a fun fact and one letter. the 5 letters unscramble into the culprit's name, which goes in the google form.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+## pages
+
+- `/` the case, how to play, prizes
+- `/c/<slug>` the 5 QR pages. slugs are random so you can't skip ahead by typing `/c/5`
+- `/suspects`, `/notebook`, `/making-of`
+- `/api/telegram` webhook for [@HooDunnitBot](https://t.me/HooDunnitBot)
+
+letters you've found are kept in `localStorage`, nothing gets sent anywhere.
+
+## editing the story
+
+everything (story, suspects, clues, fun facts, letters, riddles, form link) is in [`content/case.ts`](content/case.ts).
+the bot reads the same file so they can't disagree.
+
+- fun facts with `factVerified: false` are hidden on the site until someone checks them on campus
+- put the google form link in `FORM_URL` and the accuse button shows up
+- **don't change the slugs** once the QR posters are printed
+
+## running it
+
+```sh
+pnpm i
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## deploying
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+import the repo on vercel, then add these env vars:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| name | what |
+| --- | --- |
+| `TELEGRAM_BOT_TOKEN` | from @BotFather |
+| `TELEGRAM_WEBHOOK_SECRET` | any random string, `A-Z a-z 0-9 _ -` |
+| `SITE_URL` | e.g. `https://hoodunnit-enroot-g8.vercel.app` |
 
-## Learn More
+then point telegram at it:
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+TELEGRAM_BOT_TOKEN=... TELEGRAM_WEBHOOK_SECRET=... pnpm webhook https://hoodunnit-enroot-g8.vercel.app
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## QR posters
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```sh
+pnpm qr https://hoodunnit-enroot-g8.vercel.app   # -> qr/print.html, one A4 page per location
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+open `qr/print.html` and print, or turn it into a pdf. print 2 of each in case one gets ripped down.
