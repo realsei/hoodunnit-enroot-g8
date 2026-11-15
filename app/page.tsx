@@ -1,69 +1,83 @@
-import Image from "next/image";
+import Link from 'next/link'
+import CrimeScene from '@/components/CrimeScene'
+import Sprite from '@/components/Sprite'
+import { BOT_USERNAME, EVENT, LOCATIONS, VICTIM } from '@/content/case'
 
-export default function Home() {
+function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className='flex flex-col gap-4'>
+      <section className='box overflow-hidden pt-6'>
+        <CrimeScene />
+        <h1 className='mt-6 text-3xl sm:text-4xl'>someone wrapped {VICTIM.name}.</h1>
+        <p className='mt-3'>
+          {VICTIM.name} was {VICTIM.blurb} Last night someone wrapped him in black trash bags and red tape and left him in
+          ROOT Cove. Hoot the Owl saw everything, but all Hoot can say is “hoo?”
+        </p>
+        <p className='mt-3'>
+          Five people were on campus that night. Help Hoot find out who did it, and see some corners of SUTD you’ve
+          probably walked past without noticing.
+        </p>
+      </section>
+
+      <section className='box'>
+        <div className='box-hd'>when and where</div>
+        <dl className='grid grid-cols-[auto_1fr] gap-x-4 gap-y-1'>
+          <dt className='text-ash'>date</dt>
+          <dd>{EVENT.date}</dd>
+          <dt className='text-ash'>time</dt>
+          <dd>{EVENT.time} (briefing at 5pm sharp)</dd>
+          <dt className='text-ash'>start at</dt>
+          <dd>{EVENT.place}</dd>
+          <dt className='text-ash'>bring</dt>
+          <dd>a phone with a QR scanner, comfy shoes, a friend or two</dd>
+        </dl>
+      </section>
+
+      <section className='box'>
+        <div className='box-hd'>how to play</div>
+        <ol className='list-inside list-decimal space-y-2 marker:font-pixel marker:text-blood'>
+          <li>Come to ROOT Cove for the briefing and pick up your clue card.</li>
+          <li>
+            Your card has riddles for {LOCATIONS.length} places around campus. Visit them in any order. Each one has a QR code
+            stuck up somewhere.
+          </li>
+          <li>Scan it. You’ll get a piece of evidence, a fun fact, and one letter for your notebook.</li>
+          <li>Collect all {LOCATIONS.length} letters, unscramble them, and name the culprit in the form.</li>
+          <li>Head back to ROOT Cove for your ice cream.</li>
+        </ol>
+        <p className='mt-3 text-sm text-ash'>
+          stuck on a riddle? message <a href={`https://t.me/${BOT_USERNAME}`}>@{BOT_USERNAME}</a> and Hoot might give you a
+          nudge.
+        </p>
+      </section>
+
+      <section className='box'>
+        <div className='box-hd'>what you get</div>
+        <ul className='space-y-2'>
+          <li className='flex items-center gap-3'>
+            <Sprite name='candle' scale={2} />
+            free ice cream for the first 100 people who register
+          </li>
+          <li className='flex items-center gap-3'>
+            <Sprite name='pumpkin' scale={2} />
+            10 Grab vouchers, drawn at random from everyone who finishes
+          </li>
+        </ul>
+      </section>
+
+      <section className='box flex items-center gap-4'>
+        <Sprite name='hootHuh' scale={4} className='shrink-0' />
+        <p>
+          Meet the <Link href='/suspects'>five suspects</Link> before you go. Somebody’s alibi doesn’t hold up.
+        </p>
+      </section>
+
+      <p className='px-2 text-xs text-ash'>
+        This is a made-up story for a game. Nobody real is involved and nothing gory happens. Please stick to the open
+        areas of campus and don’t go into labs or rooms that are closed.
+      </p>
     </div>
-  );
+  )
 }
+
+export default Home
