@@ -172,9 +172,9 @@ function face(hair: string, extra: string[] = []) {
   ]
 }
 
-const stella = face('n', ['..kkkkkk..', '.kkkkkkkk.'])
+const sarah = face('n', ['..kkkkkk..', '.kkkkkkkk.'])
 const fiona = face('k', ['..ppcccp..', '.pppcppppp.'])
-const pete = [
+const percy = [
   '..wwwwww..',
   '.wwwwwwww.',
   '..wwwwww..',
@@ -186,8 +186,8 @@ const pete = [
   '..bbbbbb..',
   '.bbbbbbbb.',
 ]
-const ivan = face('o', ['..rrrrrr..', '.rrbrrbrr.'])
-const ghost = [
+const kevin = face('o', ['..rrrrrr..', '.rrbrrbrr.'])
+const meili = [
   '..bbbbbb..',
   '.bbbbbbbb.',
   'bbkkbbkkbb',
@@ -212,11 +212,11 @@ export const SPRITES = {
   pancake,
   ball,
   roof,
-  stella,
+  sarah,
   fiona,
-  pete,
-  ivan,
-  ghost,
+  percy,
+  kevin,
+  meili,
 }
 
 export type SpriteName = keyof typeof SPRITES

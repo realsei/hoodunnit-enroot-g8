@@ -25,11 +25,11 @@ export const VICTIM = {
 }
 
 export const SUSPECTS: Suspect[] = [
-  { id: 'stella', name: 'Stella Tan', role: 'auditorium stage manager', alibi: 'says she was running lights for a rehearsal all night.' },
+  { id: 'sarah', name: 'Sarah Tan', role: 'auditorium stage manager', alibi: 'says she was running lights for a rehearsal all night.' },
   { id: 'fiona', name: 'Fiona Foo', role: '3am fablab regular', alibi: 'says she went home early. for once.' },
-  { id: 'pete', name: 'Pancake Pete', role: 'self-appointed pancake machine operator', alibi: 'says he was making pancakes for the night owls.' },
-  { id: 'ivan', name: 'Coach Ivan', role: 'ISH 1 floorball captain', alibi: 'says he was locking up the sports hall.' },
-  { id: 'ghost', name: 'the Opera Ghost', role: 'lives on the old opera stage', alibi: 'says nothing. it’s a ghost.' },
+  { id: 'percy', name: 'Pancake Percy', role: 'self-appointed pancake machine operator', alibi: 'says he was making pancakes for the night owls.' },
+  { id: 'kevin', name: 'Coach Kevin', role: 'ISH 1 floorball captain', alibi: 'says he was locking up the sports hall.' },
+  { id: 'meili', name: 'Meili the Opera Ghost', role: 'has haunted the old opera stage for a few hundred years', alibi: 'says nothing. it’s a ghost.' },
 ]
 
 
@@ -54,8 +54,8 @@ export const LOCATIONS: Location[] = [
     letter: 'N',
     fact: '[team: one fun fact about the auditorium]',
     factVerified: false,
-    clue: 'The lighting desk log shows cues saved every few minutes from 9pm to 1am, all signed ST. Stella never left the booth.',
-    clears: 'stella',
+    clue: 'The lighting desk log shows cues saved every few minutes from 9pm to 1am, all signed ST. Sarah never left the booth.',
+    clears: 'sarah',
     next: 'Where ideas get laser-cut at 3am and the floor is always a little sawdusty.',
   },
   {
@@ -75,8 +75,8 @@ export const LOCATIONS: Location[] = [
     letter: 'O',
     fact: '[team: one fun fact about the pancake machine]',
     factVerified: false,
-    clue: 'The order history shows 41 pancakes between 10pm and midnight, all paid with Pete’s card. Too busy flipping to wrap anything.',
-    clears: 'pete',
+    clue: 'The order history shows 41 pancakes between 10pm and midnight, all paid with Percy’s card. Too busy flipping to wrap anything.',
+    clears: 'percy',
     next: 'Squeaky shoes, a floorball net, and the loudest echo on campus.',
   },
   {
@@ -86,8 +86,8 @@ export const LOCATIONS: Location[] = [
     letter: 'I',
     fact: '[team: one fun fact about ISH 1]',
     factVerified: false,
-    clue: 'Ivan’s locker has the hall keys and a 7-Eleven receipt from 11:58pm. The guard remembers him buying milo. He’s in the clear.',
-    clears: 'ivan',
+    clue: 'Kevin’s locker has the hall keys and a 7-Eleven receipt from 11:58pm. The guard remembers him buying milo. He’s in the clear.',
+    clears: 'kevin',
     next: 'Older than everything else on campus by a few hundred years. It even has its own stage.',
   },
   {
@@ -97,8 +97,8 @@ export const LOCATIONS: Location[] = [
     letter: 'A',
     fact: 'These timber buildings, including the double-roofed Ke Zhong pavilion and an opera stage, came from southern Anhui in China and are said to date to the Ming and Qing dynasties. Jackie Chan donated them to Singapore and they were rebuilt at SUTD.',
     factVerified: true,
-    clue: 'The dust on the opera stage is untouched. No footprints, no tape. Whatever the ghost does at night, it isn’t wrapping mannequins.',
-    clears: 'ghost',
+    clue: 'The dust on the opera stage is untouched. No footprints, no tape. Whatever Meili does at night, it isn’t wrapping mannequins.',
+    clears: 'meili',
     next: 'Lights, curtains, rows of seats. Someone here never leaves the booth.',
   },
 ]
