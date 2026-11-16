@@ -1,12 +1,14 @@
-// other enroot groups
-// g4's site 404s for now so it still points at the repo
-export const WEBRING = [
+// all 15th enroot groups, links from each repo's about section
+// g4's site 404s for now so it points at the repo, g10 hasn't got one we could find
+export const WEBRING: { group: number, theme: string, href?: string }[] = [
   { group: 1, theme: 'northstar nocturne', href: 'https://enroot-grp1.vercel.app' },
   { group: 2, theme: 'sports carnival', href: 'https://enroot-group-2-sports-carnival.vercel.app' },
   { group: 3, theme: 'murder mystery', href: 'https://sutd-murder-mystery.vercel.app' },
   { group: 4, theme: 'wellness crafts', href: 'https://github.com/Dokutah-Mike/EnROOT-G4-Event-Webpage' },
   { group: 5, theme: 'charm & chatter', href: 'https://enroot-g5.vercel.app' },
   { group: 6, theme: 'make your mark', href: 'https://makeyourmark-iota.vercel.app' },
+  { group: 7, theme: 'hall wars', href: 'https://enroot7-hallwars.vercel.app' },
   { group: 8, theme: 'hoodunnit', href: '/' },
   { group: 9, theme: 'bend, twist & bloom', href: 'https://arts-in-pyjamas.vercel.app' },
+  { group: 10, theme: 'halloween carnival' },
 ]
